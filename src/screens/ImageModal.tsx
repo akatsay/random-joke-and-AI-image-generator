@@ -14,6 +14,7 @@ export interface IProps {
 export const ImageModal = ({jokeText, modalVisible, onModalClose}: IProps) => {
 
     const [imgURL, setImgURL] = useState<string | null>(null)
+    const [hasError, setHasError] = useState<boolean>(false)
 
     const fetchImage = useCallback( async () => {
         const configuration = new Configuration({
@@ -30,13 +31,14 @@ export const ImageModal = ({jokeText, modalVisible, onModalClose}: IProps) => {
               setImgURL(response.data.data[0].url);
         } catch (error) {
             Alert.alert('couldn\t generate image, try again with another joke :(')
+            setHasError(true)
             console.error(error);
         }
     }, []) 
 
     useEffect(() => {
         fetchImage()
-    }, [])
+    }, [fetchImage])
 
     return (
         <Modal
@@ -51,16 +53,24 @@ export const ImageModal = ({jokeText, modalVisible, onModalClose}: IProps) => {
                 <View style={ImageModalStyles().imageView}>
                     {
                     imgURL ? 
-                    <Image
-                        style={{width: 256, height: 256}}
-                        source={{
-                        uri: imgURL,
-                        }}
-                    />
+                      <Image
+                          style={{width: 256, height: 256}}
+                          source={{
+                          uri: imgURL,
+                          }}
+                      />
                     :
                     <>
-                    <ActivityIndicator size="large" />
-                    <Text style={{alignSelf: 'center', marginTop: 10}}>Loading...</Text>
+                    {!hasError ?
+                      <>
+                        <ActivityIndicator size="large" />
+                        <Text style={{alignSelf: 'center', marginTop: 10}}>Loading...</Text>
+                      </>
+                      :
+                        <Text style={{alignSelf: 'center', marginTop: 50, color: 'crimson'}}>
+                            Error happened :( try again with another joke
+                        </Text>
+                    }
                     </>
                     }
                 </View>
