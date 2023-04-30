@@ -1,6 +1,7 @@
 {
-  "name": "random-joke-generator",
+  "name": "random-joke-and-AI-image-generator",
   "version": "1.0.0",
+  "author": "Alexandr Katsay akatsay2@gmail.com" 
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
