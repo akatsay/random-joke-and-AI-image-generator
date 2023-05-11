@@ -17,7 +17,7 @@ export interface Ijoke {
 
 import { JokeStyles } from '../styles/JokeStyles' 
 
-export const JokesScreen = () => {
+const JokesScreen = () => {
 
     const [jokes, setJokes] = useState<Ijoke[] | null[]>([])
 
@@ -56,3 +56,5 @@ export const JokesScreen = () => {
     </View>
     )
   }
+
+  export default JokesScreen

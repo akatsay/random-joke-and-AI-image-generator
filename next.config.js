@@ -1,5 +1,5 @@
 const { withExpo } = require('@expo/next-adapter');
-​
+
 module.exports = withExpo({
   reactStrictMode: true,
   swcMinify: true,
@@ -11,6 +11,7 @@ module.exports = withExpo({
     "react-native-safe-area-context",
     "react-native-screens",
     "react-native-url-polyfill",
+    'expo-next-react-navigation',
     // Expo/React Native packages need to be transpiled here
     'react-native',
     'react-native-web',

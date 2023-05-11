@@ -2,7 +2,7 @@ import { Text, View, Pressable } from 'react-native'
 
 import { HomeStyles } from '../styles/HomeStyles' 
 
-export const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
 
     return (
     <View style={HomeStyles().container}>
@@ -24,3 +24,5 @@ export const HomeScreen = ({navigation}) => {
     </View>
     )
   }
+
+export default HomeScreen

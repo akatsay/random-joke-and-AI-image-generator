@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { Text, View, Pressable, FlatList, TouchableOpacity  } from 'react-native'
 
 import { JokeStyles } from '../styles/JokeStyles' 
-import { ImageModal } from '../screens/ImageModal'
+import { ImageModal } from './ImageModal'
 
 export const Joke = ({jokeText}: {jokeText: string}) => {
 
