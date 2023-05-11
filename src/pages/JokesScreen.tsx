@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { View, FlatList, Alert } from 'react-native'
+import { View, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { Link } from 'expo-next-react-navigation'
 import {ListRenderItem} from 'react-native';
 import axios from 'axios';
 
 import { Joke } from '../components/Joke';
+
+import { HomeStyles } from '../styles/HomeStyles' 
 
 export interface Ijoke {
     category: string
@@ -45,15 +48,26 @@ const JokesScreen = () => {
      )
 
     return (
-
-    <View style={JokeStyles().container}>
-        { jokes && <FlatList
-            scrollEnabled
-            data={jokes}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-        />}
-    </View>
+        <>
+            <View style={JokeStyles().container}>
+                <TouchableOpacity
+                style= {HomeStyles().button}
+                >
+                    <Link style={HomeStyles().buttonText} routeName='HomeScreen'
+                    web={{
+                        path: '/',
+                    }}>
+                        {'<='}Go back
+                    </Link>
+                </TouchableOpacity>
+                { jokes && <FlatList
+                    scrollEnabled
+                    data={jokes}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                />}
+            </View>
+        </>
     )
   }
 
